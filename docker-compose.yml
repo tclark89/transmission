@@ -1,0 +1,21 @@
+services:
+  transmission:
+    container_name: transmission
+    image: linuxserver/transmission
+    restart: unless-stopped
+    environment:
+      - PUID=1000
+      - PGID=1000
+      - TZ=America/Chicago
+    volumes:
+      - /mnt/RAID/tyler/torrents/config:/config
+      - /mnt/RAID/tyler/torrents/download:/downloads
+      - /mnt/RAID/tyler/torrents/watch:/watch
+    #ports:
+    #  - 51413:51413
+    #  - 51413:51413/udp
+
+networks:
+  default:
+    external: true
+    name: transmission
